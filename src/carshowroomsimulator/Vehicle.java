@@ -1,14 +1,16 @@
 package carshowroomsimulator;
 
-public class Vehicle implements Comparable<Vehicle> {
+import java.util.Comparator;
 
-    private final String brand;
-    private final String model;
-    private final ItemCondition condition;
-    private final double price;
-    private final int yearOfProduction;
-    private final double mileage;
-    private final double engineCapacity;
+public class Vehicle implements Comparable<Vehicle>, Comparator<Vehicle> {
+
+    private String brand;
+    private String model;
+    private ItemCondition condition;
+    private double price;
+    private int yearOfProduction;
+    private double mileage;
+    private double engineCapacity;
     private int amount;
 
 
@@ -22,6 +24,10 @@ public class Vehicle implements Comparable<Vehicle> {
         this.mileage = mileage;
         this.engineCapacity = engineCapacity;
         this.amount = amount;
+    }
+
+    public Vehicle() {
+
     }
 
     void print() {
@@ -92,12 +98,26 @@ public class Vehicle implements Comparable<Vehicle> {
         return result;
     }
 
-
     @Override
     public int compareTo(Vehicle o) {
-        if (brand.equals(o.brand) && model.equals(o.model))
+        if (brand.compareToIgnoreCase(o.brand) == 0 && model.compareToIgnoreCase(o.model) == 0)
             return 0;
         else
+            return brand.compareToIgnoreCase(o.brand);
+    }
+
+    @Override
+    public int compare(Vehicle o1, Vehicle o2) {
+        int value = o1.amount - o2.amount;
+        if(value == 0){
+            return 0;
+        }
+        else if(value < 0){
+            return 1;
+        }
+        else{
             return -1;
+        }
+
     }
 }

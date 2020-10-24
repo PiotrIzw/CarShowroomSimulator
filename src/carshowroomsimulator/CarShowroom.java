@@ -110,7 +110,8 @@ public class CarShowroom {
     }
 
     public List<Vehicle> sortByName() {
-        carList.sort((o1, o2) -> o1.getBrand().compareTo(o2.getBrand()));
+        //carList.sort((o1, o2) -> o1.getBrand().compareTo(o2.getBrand()));
+        Collections.sort(carList);
 //      carList.sort(new Comparator<Vehicle>() {
 //            @Override
 //            public int compare(Vehicle o1, Vehicle o2) {
@@ -122,13 +123,14 @@ public class CarShowroom {
     }
 
     public List<Vehicle> sortByAmount() {
-        carList.sort(new Comparator<>() {
-            @Override
-            public int compare(Vehicle o1, Vehicle o2) {
-                return Integer.compare(o1.getAmount(), o2.getAmount());
-            }
-        });
-        Collections.reverse(carList);
+        Collections.sort(carList, new Vehicle());
+//        carList.sort(new Comparator<>() {
+//            @Override
+//            public int compare(Vehicle o1, Vehicle o2) {
+//                return Integer.compare(o1.getAmount(), o2.getAmount());
+//            }
+//        });
+//        Collections.reverse(carList);
         return carList;
     }
 
